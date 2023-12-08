@@ -1,0 +1,30 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding: 0%;
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    li {
+      list-style: none;
+      a {
+        color: var.$primarycolor;
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        @include mixins.desktop {
+          padding: 20px 30px;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
