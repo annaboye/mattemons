@@ -1,3 +1,5 @@
+@use "src/styles/variables.scss" as var;
+
 @mixin tablet {
   @media screen and (min-width: 768px) {
     @content;
@@ -25,4 +27,56 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@mixin playBtnStyles {
+  width: 130px;
+  height: 40px;
+  border-radius: 40px;
+  border: 2px solid rgb(253, 253, 7);
+  color: rgb(253, 253, 7);
+  font-family: "Play", sans-serif;
+  font-size: 0.8em;
+  margin: 5px;
+  background-image: linear-gradient(
+    to right,
+    #134e5e 0%,
+    #059239 51%,
+    #134e5e 100%
+  );
+  box-shadow: 0 0 20px #eee;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+  &:hover {
+    cursor: pointer;
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #134e5e 0%,
+    #71b280 51%,
+    #134e5e 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
