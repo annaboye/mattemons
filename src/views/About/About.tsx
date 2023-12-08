@@ -1,7 +1,11 @@
+import "./About.scss"
+
 export const About= () => {
     return (
       <>
-        <div>About!</div>
+        <div className="about-wrapper">
+            <div>ABOUT!</div>
+        </div>
       </>
     );
   };
