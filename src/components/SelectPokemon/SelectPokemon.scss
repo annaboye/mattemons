@@ -1,0 +1,8 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.poki-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
