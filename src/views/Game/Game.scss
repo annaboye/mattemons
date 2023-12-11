@@ -1,0 +1,18 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.bg-wrapper {
+  h1 {
+    font-size: 1.5em;
+  }
+  color: var.$primarycolor;
+  @include mixins.wrapperStyles;
+  @include mixins.backgroundStyles("src/assets/forestgame.png");
+}
+
+.img-wrapper {
+  width: 200px;
+  img {
+    width: 100%;
+  }
+}
