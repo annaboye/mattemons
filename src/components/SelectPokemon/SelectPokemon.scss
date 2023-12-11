@@ -4,5 +4,29 @@
 .poki-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 300px;
+  @include mixins.desktop {
+    width: 80%;
+  }
+  .img-container {
+    width: 150px;
+    @include mixins.desktop {
+      width: 200px;
+    }
+    img {
+      width: 100px;
+      @include mixins.desktop {
+        width: 150px;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: var.$tetriarycolor;
+      }
+    }
+  }
+}
+
+p {
+  font-size: 0.8em;
 }
