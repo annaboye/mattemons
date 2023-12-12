@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IPokemon } from "../models/IPokemon";
 
-export async function getPokemonData(): Promise<IPokemon[]> {
+export async function getPokemons(): Promise<IPokemon[]> {
   const randomOffset = Math.floor(Math.random() * 60);
   try {
     const response = await axios.post(

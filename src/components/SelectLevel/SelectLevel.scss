@@ -1,0 +1,23 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.btn-start {
+  @include mixins.playBtnStyles;
+}
+
+.toggle {
+  width: 70px;
+  height: 70px;
+  margin: 2px;
+  border-radius: 15%;
+  border: none;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0px var.$shadow-color;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.active {
+  background-color: var.$secondarycolor !important;
+  color: white !important;
+}
