@@ -25,22 +25,27 @@ export const SelectLevel= ({levelIsSelected}: ISelectLevelProps) => {
  levelIsSelected();
   }
     return (
-      <>
-       <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
-       <div>Select level:</div>
-      <div>
-        <button className={`toggle ${currentGame.level.level===1 ? "active" : ""}`} onClick={() => setLevel(1)}>Level 1</button>
-        <button className={`toggle ${currentGame.level.level===2 ? "active" : ""}`} onClick={() => setLevel(2)}>Level 2</button>
-        <button className={`toggle ${currentGame.level.level===3 ? "active" : ""}`} onClick={() => setLevel(3)}>Level 3</button>
+    <>
+    <div className="level-wrapper">
+    <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
+      <div>Välj räknesätt:</div>
+        <div>
+        <button className={`toggle ${currentGame.level.calculationMethod=== "addition"? "active" : ""}`} onClick={() => setCalculationMethod("addition")}><i className="icon fa-solid fa-plus"></i>
+        </button>
+        <button className={`toggle ${currentGame.level.calculationMethod=== "subtraction"? "active" : ""}`} onClick={() => setCalculationMethod("subtraction")}><i className="icon fa-solid fa-minus"></i></button>
+        <button className={`toggle ${currentGame.level.calculationMethod=== "multiplication"? "active" : ""}`} onClick={() => setCalculationMethod("multiplication")}><i className="icon fa-solid fa-xmark"></i></button>
+        
+        <button className={`toggle ${currentGame.level.calculationMethod=== "division"? "active" : ""}`} onClick={() => setCalculationMethod("division")}><i className="icon fa-solid fa-divide"></i></button>
       </div>
-      <div>Select calculation method:</div>
-      <div>
-        <button className={`toggle ${currentGame.level.calculationMethod=== "addition"? "active" : ""}`} onClick={() => setCalculationMethod("addition")}>Addition</button>
-        <button className={`toggle ${currentGame.level.calculationMethod=== "multiplication"? "active" : ""}`} onClick={() => setCalculationMethod("multiplication")}>Multiplication</button>
-        <button className={`toggle ${currentGame.level.calculationMethod=== "subtraction"? "active" : ""}`} onClick={() => setCalculationMethod("subtraction")}>Subtraction</button>
-        <button className={`toggle ${currentGame.level.calculationMethod=== "division"? "active" : ""}`} onClick={() => setCalculationMethod("division")}>Division</button>
+       
+       <div>Välj svårighetsgrad:</div>
+      <div className="selectlevel">
+        <button className={`toggle-long ${currentGame.level.level===1 ? "active" : ""}`} onClick={() => setLevel(1)}>Nivå 1: Siffror upp till 5</button>
+        <button className={`toggle-long ${currentGame.level.level===2 ? "active" : ""}`} onClick={() => setLevel(2)}>Nivå 2: Siffror upp till 10</button>
+        <button className={`toggle-long ${currentGame.level.level===3 ? "active" : ""}`} onClick={() => setLevel(3)}>Nivå 3: Siffror upp till 20</button>
       </div>
-      <button className="btn-start"type="button" onClick={startTheGame}>START</button>
+      <button className="btn-start"type="button" onClick={startTheGame} disabled={currentGame.level.level=== 0 || currentGame.level.calculationMethod === "" }>START</button>
+      </div>
       </>
     );
   };
