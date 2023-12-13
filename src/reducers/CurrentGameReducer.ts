@@ -11,7 +11,7 @@ export type GameAction =
 
 export const initialState: ICurrentGame = {
   player: { playerName: "", pokemonsIdList: [] },
-  level: { level: 0, calculationMethod: "" },
+  level: { numberMax: 0, calculationMethod: "" },
   selectedPokemon: { id: 0, name: "", evolves_from_species_id: 0 },
   finishLevel: false,
 };

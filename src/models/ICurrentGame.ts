@@ -9,6 +9,6 @@ export interface ICurrentGame {
 }
 
 export interface ILevel {
-  level: number;
+  numberMax: number;
   calculationMethod: string;
 }
