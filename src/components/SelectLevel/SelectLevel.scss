@@ -3,8 +3,23 @@
 
 .btn-start {
   @include mixins.playBtnStyles;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
-
+.level-wrapper {
+  background: var.$tetriarycolor;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  @include mixins.tablet {
+    width: 50%;
+  }
+}
 .toggle {
   width: 70px;
   height: 70px;
@@ -17,7 +32,31 @@
     cursor: pointer;
   }
 }
+
+.selectlevel {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .toggle-long {
+    width: 200px;
+    height: 30px;
+    margin: 2px;
+    border-radius: 15px;
+    border: none;
+    background-color: white;
+    box-shadow: 5px 5px 10px 0px var.$shadow-color;
+    font-size: 0.5em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
 .active {
   background-color: var.$secondarycolor !important;
   color: white !important;
+}
+
+.icon {
+  font-size: 3em;
 }
