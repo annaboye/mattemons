@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { getPokemonData } from "../../services/getPokemon";
+import { getPokemons } from "../../services/getPokemons";
 import { IPokemon } from "../../models/IPokemon";
 import "./SelectPokemon.scss"
 import { GameContext, GameDispatchContext } from "../../contexts/CurrentGameContext";
 
-interface SelectPokemonProps {
+interface ISelectPokemonProps {
   pokemonIsSelected: () => void;
 }
 
-export const SelectPokemon= ({pokemonIsSelected}: SelectPokemonProps) => {
+export const SelectPokemon= ({pokemonIsSelected}: ISelectPokemonProps) => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
   const dispatch = useContext(GameDispatchContext);
   const currentGame= useContext(GameContext);
@@ -22,7 +22,7 @@ export const SelectPokemon= ({pokemonIsSelected}: SelectPokemonProps) => {
   useEffect(()=> {
       const fetchData = async () => {
           try {
-            const pokemonList = await getPokemonData();
+            const pokemonList = await getPokemons();
             setPokemons(pokemonList);
           } catch (error) {
             console.error('Error fetching Pokemon data:', error);
