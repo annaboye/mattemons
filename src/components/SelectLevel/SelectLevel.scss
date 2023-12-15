@@ -6,9 +6,12 @@
   &:disabled {
     opacity: 0.5;
   }
+  &:focus {
+    outline: 3px solid #0f0f0f;
+  }
 }
 .level-wrapper {
-  background: var.$tetriarycolor;
+  @include mixins.gradientBg;
   width: 90%;
   height: 80%;
   display: flex;
@@ -17,20 +20,11 @@
   justify-content: space-evenly;
   align-items: center;
   @include mixins.tablet {
-    width: 50%;
+    width: 60%;
   }
 }
 .toggle {
-  width: 70px;
-  height: 70px;
-  margin: 2px;
-  border-radius: 15%;
-  border: none;
-  background-color: white;
-  box-shadow: 5px 5px 10px 0px var.$shadow-color;
-  &:hover {
-    cursor: pointer;
-  }
+  @include mixins.toggleBtn;
 }
 
 .selectlevel {
@@ -50,13 +44,12 @@
     &:hover {
       cursor: pointer;
     }
+    &:focus {
+      outline: 3px solid #0f0f0f;
+    }
   }
 }
 .active {
   background-color: var.$secondarycolor !important;
   color: white !important;
-}
-
-.icon {
-  font-size: 3em;
 }
