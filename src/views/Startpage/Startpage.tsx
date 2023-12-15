@@ -30,7 +30,6 @@ export const Startpage= () => {
       console.log(newPlayer)
       dispatch({type: "SET_PLAYER",
       payload: {...currentGame.player,... newPlayer}} )
-      
      navigate("/game")
     };
 
@@ -40,17 +39,21 @@ export const Startpage= () => {
     }
    
     return (
-      <>
-
-        <div className="start-wrapper">
+     <>
+      <div className="start-wrapper">
         <h1>MATTEMONS</h1>
         {showPlayerList && <div>Visa listan</div>}
-        {!showPlayerList && <div className="form-wrapper"><p>Välkommen vad heter du?</p><form onSubmit={submitPlayerForm} action=""> <input type="text" placeholder="skriv ditt namn här..."value={userInput.player} onChange={handleChange} name="player" required /><button className="play-btn"type="submit">PLAY</button></form> </div>}
-            <div className="img-wrapper">
-            <img src="src\assets\pokeball.webp" alt="pokemonball" />
-            </div>
-            
-        </div>
-      </>
+        {!showPlayerList && <div className="form-wrapper">
+          <p>Välkommen vad heter du?</p>
+          <form onSubmit={submitPlayerForm} action="">
+            <input type="text" placeholder="skriv ditt namn här..."value={userInput.player} onChange={handleChange} name="player" required />
+            <button className="play-btn"type="submit">PLAY</button>
+          </form> 
+          </div>}
+          <div className="img-wrapper">
+          <img src="src\assets\pokeball.webp" alt="pokemonball" />
+          </div> 
+      </div>
+     </>
     );
   };
