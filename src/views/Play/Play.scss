@@ -9,6 +9,15 @@
   }
 }
 
+.bg-wrapper {
+  h1 {
+    font-size: 1.5em;
+  }
+  color: var.$primarycolor;
+  @include mixins.wrapperStyles;
+  @include mixins.backgroundStyles("src/assets/forestgame.png");
+}
+
 .toggle {
   @include mixins.toggleBtn;
   font-size: 1.5em;

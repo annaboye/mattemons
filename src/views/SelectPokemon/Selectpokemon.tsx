@@ -3,20 +3,26 @@ import { getPokemons } from "../../services/getPokemons";
 import { IPokemon } from "../../models/IPokemon";
 import "./SelectPokemon.scss"
 import { GameContext, GameDispatchContext } from "../../contexts/CurrentGameContext";
+import { useNavigate } from "react-router-dom";
 
-interface ISelectPokemonProps {
-  pokemonIsSelected: () => void;
-}
 
-export const SelectPokemon= ({pokemonIsSelected}: ISelectPokemonProps) => {
+
+export const SelectPokemon= () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
   const dispatch = useContext(GameDispatchContext);
   const currentGame= useContext(GameContext);
+  const navigate= useNavigate();
+
+  useEffect(() => {
+    if (currentGame.player.playerName === '') {
+      navigate('/');
+    }
+  }, [currentGame.player, navigate]);
 
   const selectPokemon = (pokemon: IPokemon)=> {
     dispatch({type: "SET_SELECTED_POKEMON",
     payload: pokemon})
-    pokemonIsSelected();
+    navigate("/selectlevel")
   }
     
   useEffect(()=> {

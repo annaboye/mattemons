@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GameContext, GameDispatchContext } from "../../contexts/CurrentGameContext";
 import "./SelectLevel.scss"
+import { useNavigate } from "react-router-dom";
 
-interface ISelectLevelProps{
-  levelIsSelected: () => void;
-}
-
-
-export const SelectLevel= ({levelIsSelected}: ISelectLevelProps) => {
+export const SelectLevel= () => {
   const dispatch = useContext(GameDispatchContext);
   const currentGame= useContext(GameContext);
-
+  const navigate = useNavigate();
+ 
+  useEffect(() => {
+    if (currentGame.player.playerName === '') {
+      navigate('/');
+    }
+  }, [currentGame.player, navigate]);
 
   const setLevel = (numberMax: number) => {
     dispatch({ type: "SET_LEVEL", payload: { ...currentGame.level, numberMax: numberMax } });
@@ -22,10 +24,11 @@ export const SelectLevel= ({levelIsSelected}: ISelectLevelProps) => {
   };
 
   const startTheGame =()=>{
- levelIsSelected();
+   navigate("/play")
   }
     return (
     <>
+    <div className="bg-wrapper">
     <div className="level-wrapper">
     <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
       <div>Välj räknesätt:</div>
@@ -45,6 +48,7 @@ export const SelectLevel= ({levelIsSelected}: ISelectLevelProps) => {
         <button tabIndex= {0}className={`toggle-long ${currentGame.level.numberMax===20 ? "active" : ""}`} onClick={() => setLevel(20)}>Nivå 3: Siffror upp till 20</button>
       </div>
       <button  tabIndex= {0}className="btn-start"type="button" onClick={startTheGame} disabled={currentGame.level.numberMax=== 0 || currentGame.level.calculationMethod === "" }>START</button>
+      </div>
       </div>
       </>
     );

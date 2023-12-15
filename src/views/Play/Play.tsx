@@ -1,19 +1,33 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Play.scss";
 import { GameContext} from "../../contexts/CurrentGameContext";
 import { calculateAnswer } from "../../functions/mathFunctions";
 import { useNavigate } from "react-router-dom";
 
-interface IPlayProps {
-    finishGame: () => void;
-  }
+interface IQuestiondata {
+  question: string,
+  options: {value: number, isCorrect: boolean}[],
 
-export const Play = ({ finishGame }: IPlayProps) =>{
+}
+
+export const Play = () =>{
     const currentGame= useContext(GameContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showTryAgain, setShowTryAgain] = useState(false)
     const navigate= useNavigate();
+    const [winns, setWinns]=useState(false);
+    const [currentQuestionData, setCurrentQuestionData] = useState<IQuestiondata>();
+
+    useEffect(() => {
+      if (currentGame.player.playerName === '') {
+        navigate('/');
+      }
+      else{
+        const questionData = generateQuestion();
+        setCurrentQuestionData(questionData)
+      }
+    }, []);
 
     const generateRandomNumber = (max: number) => Math.floor(Math.random() * max) + 1;
 
@@ -52,7 +66,11 @@ export const Play = ({ finishGame }: IPlayProps) =>{
       };
 
       //create and set a state with generated questions using generateQuestion functin
-      const [currentQuestionData, setCurrentQuestionData] = useState(generateQuestion());
+
+     
+     
+      
+
 
       const handleAnswerClick = (selectedOption: { value: number; isCorrect: boolean }, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const clickedBtn = e.target as HTMLButtonElement;
@@ -66,7 +84,7 @@ export const Play = ({ finishGame }: IPlayProps) =>{
           setCurrentQuestionData(generateQuestion());
         } else {
             if (score===9 && selectedOption.isCorrect ){
-                finishGame();
+                setWinns(true)
             }
             else{
                 setShowTryAgain(true)
@@ -84,14 +102,16 @@ export const Play = ({ finishGame }: IPlayProps) =>{
         navigate("/")
       }
     
-    return(<div className="play-wrapper">
+    return(
+    
+    <div className="bg-wrapper" >
         
-        {!showTryAgain && <div>
+        {!showTryAgain && !winns && <div className="play-wrapper">
          <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
           <p>Fråga {currentQuestion + 1}:</p>
-          <p>{currentQuestionData.question}</p>
+          <p>{currentQuestionData?.question}</p>
           <div>
-            {currentQuestionData.options.map((option, index) => (
+            {currentQuestionData?.options.map((option, index) => (
               <button className="toggle" key={index} onClick={(e) => handleAnswerClick(option, e)}>
                 {option.value}
               </button>
@@ -100,5 +120,6 @@ export const Play = ({ finishGame }: IPlayProps) =>{
         </div>}
         {showTryAgain && <div> <button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
         <p>Score: {score}</p>
+        {winns && <div>pokemon envolves</div>}
       </div>)
 }

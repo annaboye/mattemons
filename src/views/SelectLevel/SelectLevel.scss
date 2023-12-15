@@ -10,6 +10,10 @@
     outline: 3px solid #0f0f0f;
   }
 }
+.bg-wrapper {
+  @include mixins.wrapperStyles;
+  @include mixins.backgroundStyles("src/assets/forestgame.png");
+}
 .level-wrapper {
   @include mixins.gradientBg;
   width: 90%;

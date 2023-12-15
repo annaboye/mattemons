@@ -2,15 +2,8 @@
 @use "src/styles/mixins.scss" as mixins;
 
 .select-wrapper {
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @include mixins.desktop {
-    width: 70%;
-  }
+  @include mixins.wrapperStyles;
+  @include mixins.backgroundStyles("src/assets/forestgame.png");
   .player {
     background: linear-gradient(
       transparent 0%,

@@ -9,3 +9,5 @@ export const About= () => {
       </>
     );
   };
+
+  //TODO: will be a modal

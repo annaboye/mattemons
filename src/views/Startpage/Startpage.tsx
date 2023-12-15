@@ -30,7 +30,7 @@ export const Startpage= () => {
       console.log(newPlayer)
       dispatch({type: "SET_PLAYER",
       payload: {...currentGame.player,... newPlayer}} )
-     navigate("/game")
+     navigate("/selectpokemon")
     };
 
     const handleChange =(e: ChangeEvent<HTMLInputElement>)=>{
