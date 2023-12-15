@@ -2,7 +2,6 @@
 @use "src/styles/mixins.scss" as mixins;
 
 .select-wrapper {
-  background: var.$tetriarycolor;
   width: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -13,8 +12,11 @@
     width: 70%;
   }
   .player {
-    font-size: 1.5em;
-    color: var.$secondarycolor;
+    background: linear-gradient(
+      transparent 0%,
+      rgba(238, 174, 202, 1) 10%,
+      transparent 100%
+    );
   }
   .pokemon-ball {
     width: 50px;
@@ -52,8 +54,4 @@
       }
     }
   }
-}
-
-p {
-  font-size: 0.8em;
 }

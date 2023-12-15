@@ -20,8 +20,18 @@
   }
 }
 .form-wrapper {
-  background-color: var.$tetriarycolor;
+  width: 90vw;
+  height: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include mixins.gradientBg;
+  // background-color: var.$tetriarycolor;
   padding: 10px;
+  @include mixins.desktop {
+    width: 70vh;
+    height: 70vh;
+  }
   form {
     display: flex;
     flex-direction: column;
