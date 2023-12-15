@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import "./Play.scss";
-import { GameContext} from "../../contexts/CurrentGameContext";
+import { GameContext, GameDispatchContext} from "../../contexts/CurrentGameContext";
 import { calculateAnswer } from "../../functions/mathFunctions";
 import { useNavigate } from "react-router-dom";
+import { IPlayer } from "../../models/IPlayer";
 
 interface IQuestiondata {
   question: string,
@@ -12,11 +13,11 @@ interface IQuestiondata {
 
 export const Play = () =>{
     const currentGame= useContext(GameContext);
+    const dispatch = useContext(GameDispatchContext);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showTryAgain, setShowTryAgain] = useState(false)
     const navigate= useNavigate();
-    const [winns, setWinns]=useState(false);
     const [currentQuestionData, setCurrentQuestionData] = useState<IQuestiondata>();
 
     useEffect(() => {
@@ -24,10 +25,15 @@ export const Play = () =>{
         navigate('/');
       }
       else{
+        // generate first question
         const questionData = generateQuestion();
         setCurrentQuestionData(questionData)
       }
-    }, []);
+      if (currentGame.finishLevel) {
+        updateLs();
+      }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentGame.finishLevel]);
 
     const generateRandomNumber = (max: number) => Math.floor(Math.random() * max) + 1;
 
@@ -65,13 +71,6 @@ export const Play = () =>{
         };
       };
 
-      //create and set a state with generated questions using generateQuestion functin
-
-     
-     
-      
-
-
       const handleAnswerClick = (selectedOption: { value: number; isCorrect: boolean }, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const clickedBtn = e.target as HTMLButtonElement;
         clickedBtn.blur();
@@ -84,7 +83,12 @@ export const Play = () =>{
           setCurrentQuestionData(generateQuestion());
         } else {
             if (score===9 && selectedOption.isCorrect ){
-                setWinns(true)
+              currentGame.finishLevel= true;
+              dispatch({
+                type: "ADD_POKEMON_ID",
+                payload: currentGame.selectedPokemon.id,
+              });
+
             }
             else{
                 setShowTryAgain(true)
@@ -93,6 +97,28 @@ export const Play = () =>{
         }
       };
 
+      const updateLs = () => {
+        const playersFromLS: IPlayer[] = JSON.parse(localStorage.getItem("players") || "[]");
+      
+        let playerFound = false;
+      
+        for (let i = 0; i < playersFromLS.length; i++) {
+          if (playersFromLS[i].playerName === currentGame.player.playerName) {
+            playersFromLS[i] = currentGame.player;
+            playerFound = true;
+            break; // Exit the loop since the player is found
+          }
+        }
+      
+        if (!playerFound) {
+          playersFromLS.push(currentGame.player);
+        }
+      
+        console.log(playersFromLS);
+      
+        localStorage.setItem("players", JSON.stringify(playersFromLS));
+      };
+      
       const wantToTryAgain=()=>{
         setShowTryAgain(false)
         setScore(0)
@@ -106,7 +132,7 @@ export const Play = () =>{
     
     <div className="bg-wrapper" >
         
-        {!showTryAgain && !winns && <div className="play-wrapper">
+        {!showTryAgain && !currentGame.finishLevel && <div className="play-wrapper">
          <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
           <p>Fråga {currentQuestion + 1}:</p>
           <p>{currentQuestionData?.question}</p>
@@ -120,6 +146,6 @@ export const Play = () =>{
         </div>}
         {showTryAgain && <div> <button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
         <p>Score: {score}</p>
-        {winns && <div>pokemon envolves</div>}
+        {currentGame.finishLevel && <div>pokemon envolves</div>}
       </div>)
 }
