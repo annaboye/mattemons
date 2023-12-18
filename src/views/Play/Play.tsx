@@ -41,8 +41,8 @@ export const Play = () =>{
     Math.floor(Math.random() * (max - min + 1)) + min;
 
     const generateQuestion = () => {
-        const num1 = generateRandomNumber(currentGame.level.numberMax);
-        const num2 = generateRandomNumber(num1);
+        let num1 = generateRandomNumber(currentGame.level.numberMax);
+        let num2 = generateRandomNumber(num1);
         const correctAnswer = calculateAnswer(num1,num2, currentGame.level.calculationMethod)
         const range = currentGame.level.numberMax; 
         const incorrectOptions: number[] = [];
@@ -64,6 +64,20 @@ export const Play = () =>{
         ];
     
         options.sort(() => Math.random() - 0.5);
+
+        const question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`
+
+        if( question === currentQuestionData?.question){
+          if(num1 === currentGame.level.numberMax && num2 !== 0){
+            num1 --;
+            num2 --;}
+            if(num1 === currentGame.level.numberMax && num2 === 0){
+              num1 --;
+            }
+            else{
+              num1 ++;
+            }
+        }
     
         return {
           question: `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`,
