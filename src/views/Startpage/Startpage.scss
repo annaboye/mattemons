@@ -3,7 +3,7 @@
 
 .start-wrapper {
   h1 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
@@ -35,30 +35,26 @@
   }
 }
 
-.play-btn {
-  @include mixins.playBtnStyles;
-  &:disabled {
-    opacity: 0.5;
-  }
-  &:focus {
-    outline: 3px solid #0f0f0f;
-  }
-}
-
 .players-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 50vh;
+  font-size: 0.8em;
   .playerslist {
+    font-size: 0.5em;
     list-style: none;
     margin: 0;
     padding: 0;
     background-color: pink;
-    max-height: 200px;
+    max-height: 150px;
     width: 200px;
     max-width: 90%;
     overflow-y: scroll;
+    .play-btn {
+      font-size: 4em;
+    }
     li {
       &:hover {
         cursor: pointer;
@@ -69,4 +65,24 @@
 
 .selected {
   background-color: grey;
+}
+
+.play-btn {
+  @include mixins.playBtnStyles;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: 3px solid #0f0f0f;
+  }
+}
+
+.newplayerbtn {
+  background-color: white;
+
+  border: none;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
 }

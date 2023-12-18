@@ -47,13 +47,17 @@ export const Startpage= () => {
       dispatch({type: "SET_PLAYER",
       payload: {...currentGame.player,... player}} )
     } 
+
+    const goToPlay =()=>{
+      navigate("/selectpokemon")
+    }
     return (
      <>
       <div className="start-wrapper">
         <h1>MATTEMONS</h1>
         {showPlayerList && <div className="players-wrapper">välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(<li key={index} onClick={()=>selectPlayer(player)} className={player.playerName === currentGame.player.playerName ? "selected" : ""}>{player.playerName} </li>))}</ul>
-        <button className="play-btn"type="submit" disabled={currentGame.player.playerName === ""}>PLAY</button>
-        <p>ny spelare? <button onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
+        <button className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>PLAY</button>
+        <p>ny spelare? <button className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
         </div>}
         {!showPlayerList && <div className="form-wrapper">
           <p>Välkommen vad heter du?</p>
