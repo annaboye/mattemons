@@ -4,10 +4,7 @@
 .start-wrapper {
   h1 {
     font-size: 1.5em;
-    // text-shadow: 2px 2px var.$tetriarycolor;
-    // background-color: var.$tetriarycolor;
   }
-
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
   @include mixins.backgroundStyles("src/assets/bgstart.png");
@@ -25,8 +22,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @include mixins.gradientBg;
-  // background-color: var.$tetriarycolor;
   padding: 10px;
   @include mixins.desktop {
     width: 70vh;
@@ -37,8 +32,41 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    .play-btn {
-      @include mixins.playBtnStyles;
+  }
+}
+
+.play-btn {
+  @include mixins.playBtnStyles;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: 3px solid #0f0f0f;
+  }
+}
+
+.players-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .playerslist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: pink;
+    max-height: 200px;
+    width: 200px;
+    max-width: 90%;
+    overflow-y: scroll;
+    li {
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
+}
+
+.selected {
+  background-color: grey;
 }

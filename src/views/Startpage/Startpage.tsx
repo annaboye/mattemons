@@ -15,34 +15,46 @@ export const Startpage= () => {
   const [showPlayerList, setShowPlayerList] = useState(false);
   const [userInput, setUserInput] = useState(defaultPlayerInput)
   const navigate= useNavigate();
+  const [playerlist, setPlayerList]=useState<IPlayer[]>([])
 
     useEffect(()=> {
         const playersFromLS: IPlayer[]= (JSON.parse(localStorage.getItem("players")|| "[]"));
-        if(playersFromLS.length>1){
+        if(playersFromLS.length>0){
             setShowPlayerList(true)
+            setPlayerList(playersFromLS)
         }
   
     }, [])
 
     const submitPlayerForm = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      const newPlayer = {playerName: userInput.player, pokemonIdList: []}
+      const newPlayer = {playerName: userInput.player, pokemonsIdList: []}
       console.log(newPlayer)
       dispatch({type: "SET_PLAYER",
       payload: {...currentGame.player,... newPlayer}} )
-     navigate("/selectpokemon")
+      const playersFromLS: IPlayer[]= (JSON.parse(localStorage.getItem("players")|| "[]"));
+      playersFromLS.push(newPlayer)
+      localStorage.setItem("players", JSON.stringify(playersFromLS));
+      navigate("/selectpokemon")
     };
 
     const handleChange =(e: ChangeEvent<HTMLInputElement>)=>{
       const name = e.target.name;
       setUserInput({ ...userInput, [name]: e.target.value });
     }
-   
+
+    const selectPlayer = (player: IPlayer)=>{
+      dispatch({type: "SET_PLAYER",
+      payload: {...currentGame.player,... player}} )
+    } 
     return (
      <>
       <div className="start-wrapper">
         <h1>MATTEMONS</h1>
-        {showPlayerList && <div>Visa listan</div>}
+        {showPlayerList && <div className="players-wrapper">välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(<li key={index} onClick={()=>selectPlayer(player)} className={player.playerName === currentGame.player.playerName ? "selected" : ""}>{player.playerName} </li>))}</ul>
+        <button className="play-btn"type="submit" disabled={currentGame.player.playerName === ""}>PLAY</button>
+        <p>ny spelare? <button onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
+        </div>}
         {!showPlayerList && <div className="form-wrapper">
           <p>Välkommen vad heter du?</p>
           <form onSubmit={submitPlayerForm} action="">
