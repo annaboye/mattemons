@@ -14,10 +14,11 @@ export const SelectPokemon= () => {
   const navigate= useNavigate();
 
   useEffect(() => {
+    currentGame.finishLevel= false;
     if (currentGame.player.playerName === '') {
       navigate('/');
     }
-  }, [currentGame.player, navigate]);
+  }, [currentGame.player]);
 
   const selectPokemon = (pokemon: IPokemon)=> {
     dispatch({type: "SET_SELECTED_POKEMON",
