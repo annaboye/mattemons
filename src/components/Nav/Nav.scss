@@ -12,19 +12,21 @@
     flex-direction: row;
     li {
       list-style: none;
-      a {
-        color: var.$primarycolor;
-        display: block;
-        padding: 5px;
-        text-decoration: none;
-        @include mixins.desktop {
-          padding: 20px 30px;
-        }
-        &:hover {
-            text-decoration: underline;
-        }
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      &:hover {
+        cursor: pointer;
       }
     }
   }
 }
+
+.navicon {
+  font-size: 4em;
+  color: crimson;
+  filter: drop-shadow(2px 10px 0.5rem white);
+}
+
 
