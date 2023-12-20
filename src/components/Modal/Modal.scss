@@ -18,6 +18,12 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    max-width: 90%;
+    max-height: 70%;
+    @include mixins.desktop {
+      max-width: 60%;
+    }
     a {
       color: var.$primarycolor;
       display: block;
