@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./Play.scss";
 import { GameContext, GameDispatchContext} from "../../contexts/CurrentGameContext";
-import { calculateAnswer } from "../../functions/mathFunctions";
+import { calculateAnswer, generateRandomNumber, generateRandomNumberInRange } from "../../functions/mathFunctions";
 import { useNavigate } from "react-router-dom";
 import { IPlayer } from "../../models/IPlayer";
 import { PokiEvolves } from "../../components/PokiEvolves/PokiEvolves";
@@ -9,7 +9,6 @@ import { PokiEvolves } from "../../components/PokiEvolves/PokiEvolves";
 interface IQuestiondata {
   question: string,
   options: {value: number, isCorrect: boolean}[],
-
 }
 
 export const Play = () =>{
@@ -35,16 +34,11 @@ export const Play = () =>{
           // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentGame.finishLevel]);
 
-    const generateRandomNumber = (max: number) => Math.floor(Math.random() * max) + 1;
-
-    const generateRandomNumberInRange = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
-
     const generateQuestion = () => {
         let num1 = generateRandomNumber(currentGame.level.numberMax);
         let num2 = generateRandomNumber(num1);
         const question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`
-    
+     // check so next question will be different from current:
         if( question === currentQuestionData?.question){
           if(num1 === currentGame.level.numberMax && num2 !== 0){
             num1 --;
@@ -57,9 +51,9 @@ export const Play = () =>{
             }
         }
         const correctAnswer = calculateAnswer(num1,num2, currentGame.level.calculationMethod)
+        // generate incorrectoptions and check that they differ from each other and from the correct answer:
         const range = currentGame.level.numberMax; 
         const incorrectOptions: number[] = [];
-
         for (let i = 0; i < 2; i++) {
           let option;
           do {
@@ -67,14 +61,13 @@ export const Play = () =>{
           } while (option === correctAnswer || incorrectOptions.includes(option) || option < 0);
           incorrectOptions.push(option);
         }
-        
-          
+         
         const options = [
           { value: correctAnswer, isCorrect: true },
           { value: incorrectOptions[0], isCorrect: false },
           { value: incorrectOptions[1], isCorrect: false },
         ];
-    
+        // shuffle the list:
         options.sort(() => Math.random() - 0.5);
 
         return {

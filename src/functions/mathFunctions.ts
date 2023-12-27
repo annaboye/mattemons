@@ -18,3 +18,11 @@ export const calculateAnswer = (
       throw new Error("Invalid calculation method");
   }
 };
+
+export const generateRandomNumber = (max: number): number => {
+  return Math.floor(Math.random() * max) + 1;
+};
+
+export const generateRandomNumberInRange = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
