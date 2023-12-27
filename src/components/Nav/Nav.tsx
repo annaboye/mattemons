@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 import "./Nav.scss"
 import { Modal } from "../Modal/Modal";
@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export const Nav= () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const location = useLocation();
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -21,7 +22,7 @@ export const Nav= () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h2>Vart vill du gå?</h2>
         <Link to={"/"}><button className="long-btn">STARTSIDA</button></Link>
-        <Link to={"/collection"}><button className="long-btn">MIN POKEMONSAMLING</button></Link>
+        {location.pathname !== "/" && <Link to={"/collection"}><button className="long-btn">MIN POKEMONSAMLING</button></Link>}
       </Modal>
     </header>
    )

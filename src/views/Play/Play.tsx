@@ -97,8 +97,8 @@ export const Play = () =>{
             if (score===9 && selectedOption.isCorrect ){
               currentGame.finishLevel= true;
               dispatch({
-                type: "ADD_POKEMON_ID",
-                payload: currentGame.selectedPokemon.id,
+                type: "ADD_POKEMON",
+                payload: currentGame.selectedPokemon,
               });
 
             }

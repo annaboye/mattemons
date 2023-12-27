@@ -1,4 +1,6 @@
+import { IPokemon } from "./IPokemon";
+
 export interface IPlayer {
   playerName: string;
-  pokemonsIdList: number[];
+  pokemonList: IPokemon[];
 }
