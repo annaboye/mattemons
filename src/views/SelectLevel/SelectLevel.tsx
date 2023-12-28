@@ -2,6 +2,9 @@ import { useContext, useEffect } from "react";
 import { GameContext, GameDispatchContext } from "../../contexts/CurrentGameContext";
 import "./SelectLevel.scss"
 import { useNavigate } from "react-router-dom";
+import { FaPlus,  FaMinus, FaDivide } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+
 
 export const SelectLevel= () => {
   const dispatch = useContext(GameDispatchContext);
@@ -33,12 +36,11 @@ export const SelectLevel= () => {
     <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
       <div>Välj räknesätt:</div>
         <div>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "+"? "active" : ""}`} onClick={() => setCalculationMethod("+")}><i className="icon fa-solid fa-plus"></i>
+        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "+"? "active" : ""}`} onClick={() => setCalculationMethod("+")}><FaPlus className="icon" ></FaPlus>
         </button>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "-"? "active" : ""}`} onClick={() => setCalculationMethod("-")}><i className="icon fa-solid fa-minus"></i></button>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "*"? "active" : ""}`} onClick={() => setCalculationMethod("*")}><i className="icon fa-solid fa-xmark"></i></button>
-        
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "/"? "active" : ""}`} onClick={() => setCalculationMethod("/")}><i className="icon fa-solid fa-divide"></i></button>
+        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "-"? "active" : ""}`} onClick={() => setCalculationMethod("-")}><FaMinus className="icon"></FaMinus></button>
+        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "*"? "active" : ""}`} onClick={() => setCalculationMethod("*")}><ImCross className="icon"></ImCross></button>
+        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "/"? "active" : ""}`} onClick={() => setCalculationMethod("/")}><FaDivide className="icon"></FaDivide></button>
       </div>
        
        <div>Välj svårighetsgrad:</div>
