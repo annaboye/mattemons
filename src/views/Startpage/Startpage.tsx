@@ -28,7 +28,7 @@ export const Startpage= () => {
 
     const submitPlayerForm = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      const newPlayer = {playerName: userInput.player, pokemonsIdList: []}
+      const newPlayer = {playerName: userInput.player, pokemonList: []}
       console.log(newPlayer)
       dispatch({type: "SET_PLAYER",
       payload: {...currentGame.player,... newPlayer}} )
