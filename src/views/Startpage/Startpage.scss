@@ -7,7 +7,6 @@
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("bgstart.png");
 }
 
 .img-wrapper {
