@@ -23,7 +23,7 @@
 }
 
 @mixin backgroundStyles($image-url) {
-  background-image: url($image-url);
+  background-image: url("/#{$image-url}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

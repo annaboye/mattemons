@@ -4,7 +4,7 @@
 .collection-wrapper {
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("src/assets/forestabout.png");
+  @include mixins.backgroundStyles("forestabout.png");
   .content-wrapper {
     max-height: 70vh;
     width: 100%;

@@ -67,7 +67,7 @@ export const Startpage= () => {
           </form> 
           </div>}
           <div className="img-wrapper">
-          <img src="src\assets\pokeball.webp" alt="pokemonball" />
+          <img src={`${import.meta.env.BASE_URL}pokeball.webp`} alt="pokemonball" />
           </div> 
       </div>
      </>
