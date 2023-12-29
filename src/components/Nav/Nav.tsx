@@ -21,8 +21,8 @@ export const Nav= () => {
       </ul>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <h2>Vart vill du gå?</h2>
-        <Link to={"/"}><button className="long-btn">STARTSIDA</button></Link>
-        {location.pathname !== "/" && <Link to={"/collection"}><button className="long-btn">MIN POKEMONSAMLING</button></Link>}
+        <Link to={"/"} onClick={closeModal}><button className="long-btn">STARTSIDA</button></Link>
+        {location.pathname !== "/" && <Link onClick={closeModal} to={"/collection"}><button className="long-btn">MIN POKEMONSAMLING</button></Link>}
       </Modal>
     </header>
    )
