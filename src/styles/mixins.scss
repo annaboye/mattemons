@@ -1,3 +1,5 @@
+@use "src/styles/variables.scss" as var;
+
 @mixin tablet {
   @media screen and (min-width: 768px) {
     @content;
@@ -12,7 +14,7 @@
 
 @mixin wrapperStyles {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   font-size: 2em;
@@ -25,4 +27,78 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@mixin gradientBg {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 10%,
+    transparent 55%
+  );
+}
+
+@mixin toggleBtn {
+  width: 70px;
+  height: 70px;
+  margin: 2px;
+  border-radius: 15%;
+  border: none;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0px var.$shadow-color;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 3px solid #0f0f0f;
+  }
+}
+
+@mixin baseBtnStyles {
+  width: 130px;
+  height: 40px;
+  border-radius: 40px;
+  border: 2px solid rgb(253, 253, 7);
+  color: rgb(253, 253, 7);
+  font-family: "Play", sans-serif;
+  margin: 5px;
+  box-shadow: 0 0 20px #eee;
+  transition: 0.5s;
+  background-size: 200% auto;
+
+  &:hover {
+    cursor: pointer;
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+@mixin cancelBtnStyles {
+  @include baseBtnStyles;
+  background-image: linear-gradient(
+    to right,
+    #490400 0%,
+    #f20909 51%,
+    #5e1313 100%
+  );
+}
+
+@mixin playBtnStyles {
+  @include baseBtnStyles;
+  background-image: linear-gradient(
+    to right,
+    #134e5e 0%,
+    #026b29 51%,
+    #134e5e 100%
+  );
+}
+
+@mixin pokiBtnStyles {
+  @include baseBtnStyles;
+  background-image: linear-gradient(
+    to right,
+    #5d24d0 0%,
+    #3b0592 51%,
+    #58135e 100%
+  );
 }

@@ -1,0 +1,34 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.play-wrapper {
+  width: 100%;
+  @include mixins.gradientBg;
+  @include mixins.tablet {
+    width: 50%;
+  }
+}
+
+.bg-wrapper {
+  h1 {
+    font-size: 1.5em;
+  }
+  color: var.$primarycolor;
+  @include mixins.wrapperStyles;
+  @include mixins.backgroundStyles("src/assets/forestgame.png");
+}
+
+.toggle {
+  @include mixins.toggleBtn;
+  font-size: 1.5em;
+}
+
+.play-btn {
+  @include mixins.playBtnStyles;
+  font-size: 0.5em;
+}
+
+.cancel-btn {
+  @include mixins.cancelBtnStyles;
+  font-size: 0.5em;
+}

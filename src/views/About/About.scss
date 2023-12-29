@@ -1,8 +1,0 @@
-@use "src/styles/variables.scss" as var;
-@use "src/styles/mixins.scss" as mixins;
-
-.about-wrapper {
-  color: var.$primarycolor;
-  @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("src/assets/forestabout.png");
-}

@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Startpage } from "./views/Startpage/Startpage";
 import { Error } from "./views/Error/Error";
-import { Game } from "./views/Game/Game";
-import { About } from "./views/About/About";
+import { About } from "./components/About/About";
 import { Layout } from "./views/Layout";
+import { SelectPokemon } from "./views/SelectPokemon/Selectpokemon";
+import { SelectLevel } from "./views/SelectLevel/SelectLevel";
+import { Play } from "./views/Play/Play";
+import { PokemonCollection } from "./views/PokemonCollection/PokemonCollection";
 
 
 export const router = createBrowserRouter([
@@ -17,9 +20,24 @@ export const router = createBrowserRouter([
           element: <Startpage></Startpage>,
           index: true,
         },
-        {
-            path: "/game",
-            element: <Game></Game>,
+          {
+            path: "/selectpokemon",
+            element: <SelectPokemon></SelectPokemon>,
+            errorElement: <Error></Error>,
+          },
+          {
+            path: "/selectlevel",
+            element: <SelectLevel></SelectLevel>,
+            errorElement: <Error></Error>,
+          },
+          {
+            path: "/play",
+            element: <Play></Play>,
+            errorElement: <Error></Error>,
+          },
+          {
+            path: "/collection",
+            element: <PokemonCollection></PokemonCollection>,
             errorElement: <Error></Error>,
           },
           {
