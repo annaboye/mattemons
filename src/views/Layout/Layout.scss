@@ -1,0 +1,25 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.layout-container {
+  height: 100vh;
+}
+.startpage {
+  @include mixins.backgroundStyles("bgstart.png");
+}
+
+.play {
+  @include mixins.backgroundStyles("bgstart.png");
+}
+
+.collection {
+  @include mixins.backgroundStyles("forestabout.png");
+}
+
+.selectpokemon {
+  @include mixins.backgroundStyles("forestgame.png");
+}
+
+.selectlevel {
+  @include mixins.backgroundStyles("forestgame.png");
+}

@@ -3,7 +3,6 @@
 
 .select-bg {
   @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("forestgame.png");
   .select-wrapper {
     height: 60vh;
     font-size: 0.8em;

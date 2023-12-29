@@ -44,13 +44,15 @@ export const SelectLevel= () => {
       </div>
        
        <div>Välj svårighetsgrad:</div>
-      <div className="selectlevel">
+      <div className="select-wrapper">
         <button tabIndex= {0} className={`toggle-long ${currentGame.level.numberMax===5 ? "active" : ""}`} onClick={() => setLevel(5)}>Nivå 1: Siffror upp till 5</button>
         <button tabIndex= {0} className={`toggle-long ${currentGame.level.numberMax===10 ? "active" : ""}`} onClick={() => setLevel(10)}>Nivå 2: Siffror upp till 10</button>
         <button tabIndex= {0}className={`toggle-long ${currentGame.level.numberMax===20 ? "active" : ""}`} onClick={() => setLevel(20)}>Nivå 3: Siffror upp till 20</button>
+        
+      </div>
+
       </div>
       <button  tabIndex= {0}className="btn-start"type="button" onClick={startTheGame} disabled={currentGame.level.numberMax=== 0 || currentGame.level.calculationMethod === "" }>START</button>
-      </div>
       </div>
       </>
     );

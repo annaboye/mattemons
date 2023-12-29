@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Startpage } from "./views/Startpage/Startpage";
 import { Error } from "./views/Error/Error";
 import { About } from "./components/About/About";
-import { Layout } from "./views/Layout";
+import { Layout } from "./views/Layout/Layout";
 import { SelectPokemon } from "./views/SelectPokemon/Selectpokemon";
 import { SelectLevel } from "./views/SelectLevel/SelectLevel";
 import { Play } from "./views/Play/Play";

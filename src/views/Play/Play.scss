@@ -15,7 +15,6 @@
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("forestgame.png");
 }
 
 .toggle {

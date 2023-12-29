@@ -3,7 +3,6 @@
 
 .bg-wrapper {
   @include mixins.wrapperStyles;
-  @include mixins.backgroundStyles("forestgame.png");
   .level-wrapper {
     @include mixins.gradientBg;
     width: 90%;
@@ -22,7 +21,7 @@
         font-size: 0.8em;
       }
     }
-    .selectlevel {
+    .select-wrapper {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -48,14 +47,14 @@
       background-color: var.$secondarycolor !important;
       color: white !important;
     }
-    .btn-start {
-      @include mixins.playBtnStyles;
-      &:disabled {
-        opacity: 0.5;
-      }
-      &:focus {
-        outline: 3px solid #0f0f0f;
-      }
-    }
+  }
+}
+.btn-start {
+  @include mixins.playBtnStyles;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: 3px solid #0f0f0f;
   }
 }
