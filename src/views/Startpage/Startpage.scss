@@ -7,81 +7,80 @@
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
-}
-
-.img-wrapper {
-  width: 200px;
-  img {
-    width: 100%;
+  .img-wrapper {
+    width: 200px;
+    img {
+      width: 100%;
+    }
   }
-}
-.form-wrapper {
-  width: 90vw;
-  height: 90vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px;
-  @include mixins.desktop {
-    width: 70vh;
-    height: 70vh;
-  }
-  form {
+  .form-wrapper {
+    width: 90vw;
+    height: 90vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-.players-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  font-size: 0.8em;
-  .playerslist {
-    font-size: 0.5em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background-color: pink;
-    max-height: 150px;
-    width: 200px;
-    max-width: 90%;
-    overflow-y: scroll;
-    .play-btn {
-      font-size: 4em;
+    justify-content: center;
+    padding: 10px;
+    @include mixins.desktop {
+      width: 70vh;
+      height: 70vh;
     }
-    li {
-      &:hover {
-        cursor: pointer;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .players-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 0.8em;
+    .playerslist {
+      font-size: 0.5em;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: pink;
+      max-height: 150px;
+      width: 200px;
+      max-width: 90%;
+      overflow-y: scroll;
+      .play-btn {
+        font-size: 4em;
+      }
+      li {
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
-}
 
-.selected {
-  background-color: grey;
-}
-
-.play-btn {
-  @include mixins.playBtnStyles;
-  &:disabled {
-    opacity: 0.5;
+  .selected {
+    background-color: grey;
   }
-  &:focus {
-    outline: 3px solid #0f0f0f;
+
+  .play-btn {
+    @include mixins.playBtnStyles;
+    &:disabled {
+      opacity: 0.5;
+    }
+    &:focus {
+      outline: 3px solid #0f0f0f;
+    }
   }
-}
 
-.newplayerbtn {
-  background-color: white;
+  .newplayerbtn {
+    background-color: white;
 
-  border: none;
-  border-radius: 5px;
-  &:hover {
-    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

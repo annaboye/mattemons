@@ -135,9 +135,9 @@ export const Play = () =>{
     
     return(
     
-    <div className="bg-wrapper" >
+    <div className="play-wrapper" >
         
-        {!showTryAgain && !currentGame.finishLevel && <div className="play-wrapper">
+        {!showTryAgain && !currentGame.finishLevel && <div className="gameon-wrapper">
          <div><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
           <p>Fråga {currentQuestion + 1}:</p>
           <p>{currentQuestionData?.question}</p>
