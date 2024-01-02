@@ -43,9 +43,8 @@ export const SelectPokemon= () => {
  
   return (
     <>
-    <div className="select-bg">
-      
-      <span className="player">Hej {currentGame.player.playerName}!<p>Fånga din pokemon som ska utvecklas till nästa nivå:</p></span> 
+    <div className="select-wrapper">
+      <div className="player">Hej {currentGame.player.playerName}! <p> Fånga din pokemon som ska utvecklas till nästa nivå: </p></div> 
       <div className="poki-wrapper">{pokemons.map((pokemon)=>( <div key={pokemon.id} className="img-container"><img onClick={() => selectPokemon(pokemon)} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.evolves_from_species_id}.png`}
       alt="pokemon"  />
       </div>
