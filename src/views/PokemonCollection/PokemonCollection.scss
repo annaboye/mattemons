@@ -51,4 +51,14 @@
       }
     }
   }
+  .play-btn {
+    @include mixins.playBtnStyles;
+
+    &:focus {
+      outline: 3px solid #0f0f0f;
+    }
+  }
+  .cancel-btn {
+    @include mixins.cancelBtnStyles;
+  }
 }
