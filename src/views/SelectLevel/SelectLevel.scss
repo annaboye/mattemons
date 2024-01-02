@@ -4,10 +4,19 @@
 .level-wrapper {
   @include mixins.wrapperStyles;
   @include mixins.gradientBg;
-
+  .img-container {
+    width: 150px;
+    @include mixins.desktop {
+      width: 300px;
+      height: 160px;
+    }
+    img {
+      width: 100px;
+    }
+  }
   .toggle {
     @include mixins.toggleBtn;
-    font-size: 0.8em;
+
     .icon {
       font-size: 1em;
     }
@@ -25,7 +34,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 35%;
+    height: 40%;
     .toggle-long {
       color: black;
       font-family: "Play", sans-serif;
@@ -44,18 +53,19 @@
         outline: 3px solid #0f0f0f;
       }
     }
-    .btn-start {
-      @include mixins.playBtnStyles;
-      &:disabled {
-        opacity: 0.5;
-      }
-      &:focus {
-        outline: 3px solid #0f0f0f;
-      }
-    }
   }
   .active {
     background-color: var.$secondarycolor !important;
     color: white !important;
+  }
+}
+
+.btn-start {
+  @include mixins.playBtnStyles;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: 3px solid #0f0f0f;
   }
 }

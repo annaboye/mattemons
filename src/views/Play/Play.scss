@@ -9,6 +9,20 @@
   @include mixins.gradientBg;
   @include mixins.wrapperStyles;
   .gameon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .img-container {
+      width: 150px;
+      @include mixins.desktop {
+        width: 300px;
+        height: 160px;
+      }
+      img {
+        width: 100px;
+      }
+    }
     width: 100%;
     @include mixins.tablet {
       width: 50%;

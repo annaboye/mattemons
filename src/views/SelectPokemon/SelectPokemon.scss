@@ -1,9 +1,8 @@
 @use "src/styles/variables.scss" as var;
 @use "src/styles/mixins.scss" as mixins;
 
-.select-bg {
+.select-wrapper {
   @include mixins.wrapperStyles;
-
   font-size: 0.8em;
 
   .player {
@@ -12,6 +11,7 @@
       rgba(238, 174, 202, 1) 10%,
       transparent 100%
     );
+    font-size: 1.5em;
   }
   .pokemon-ball {
     width: 50px;
