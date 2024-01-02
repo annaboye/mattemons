@@ -7,6 +7,7 @@
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
+  @include mixins.gradientBg;
   .img-wrapper {
     width: 200px;
     img {
@@ -31,7 +32,6 @@
       justify-content: space-between;
     }
   }
-
   .players-wrapper {
     display: flex;
     flex-direction: column;
@@ -39,12 +39,13 @@
     align-items: center;
     height: 50vh;
     font-size: 0.8em;
+
     .playerslist {
       font-size: 0.5em;
       list-style: none;
       margin: 0;
       padding: 0;
-      background-color: pink;
+      background-color: white;
       max-height: 150px;
       width: 200px;
       max-width: 90%;
@@ -53,15 +54,37 @@
         font-size: 4em;
       }
       li {
+        height: 30px;
+        width: 100%;
+        display: flex;
+        align-items: center;
         &:hover {
           cursor: pointer;
         }
+        input {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        label {
+          display: flex;
+          align-items: center;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    button {
+      &:focus {
+        outline: 3px solid #0f0f0f;
       }
     }
   }
 
   .selected {
-    background-color: grey;
+    background-color: rgb(215, 186, 255);
   }
 
   .play-btn {

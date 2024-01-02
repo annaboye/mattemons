@@ -55,15 +55,29 @@ export const Startpage= () => {
      <>
       <div className="start-wrapper">
         <h1>MATTEMONS</h1>
-        {showPlayerList && <div className="players-wrapper">välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(<li key={index} onClick={()=>selectPlayer(player)} className={player.playerName === currentGame.player.playerName ? "selected" : ""}>{player.playerName} </li>))}</ul>
-        <button className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>PLAY</button>
-        <p>ny spelare? <button className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
+        {showPlayerList && <div className="players-wrapper">välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(
+          <li key={index} onClick={() => selectPlayer(player)}className={player.playerName === currentGame.player.playerName ? "selected" : ""}>
+            <label>
+            <input tabIndex={0}
+              type="radio"
+              value={player.playerName}
+              checked={player.playerName === currentGame.player.playerName}
+              onChange={() => selectPlayer(player)}
+            />
+            {player.playerName}
+            </label>
+        </li>
+        
+        ))}
+        </ul>
+        <button tabIndex={0} className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>PLAY</button>
+        <p>ny spelare? <button  tabIndex={0}className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
         </div>}
         {!showPlayerList && <div className="form-wrapper">
           <p>Välkommen vad heter du?</p>
           <form onSubmit={submitPlayerForm} action="">
             <input type="text" placeholder="skriv ditt namn här..."value={userInput.player} onChange={handleChange} name="player" required />
-            <button className="play-btn"type="submit">PLAY</button>
+            <button tabIndex={0} className="play-btn"type="submit">PLAY</button>
           </form> 
           </div>}
           <div className="img-wrapper">
