@@ -10,7 +10,6 @@ export const PokemonCollection = () =>{
     return(
     <>
     <div className="collection-wrapper">
-    <div className="content-wrapper">
     <div className="pokis-wrapper">{currentGame.player.pokemonList.map((pokemon)=>(<div className="pokemon"> <div key={pokemon.id} className="img-container"><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
     alt="pokemon"/></div>
     <span>{pokemon.name}</span></div>))}
@@ -18,5 +17,5 @@ export const PokemonCollection = () =>{
     <button className="play-btn" onClick={ ()=>{ navigate('/selectpokemon')} }>spela igen</button>
     <button className="cancel-btn" onClick={()=>{ navigate('/')}}>avsluta</button>
     </div>
-    </div></>)
+    </>)
 }

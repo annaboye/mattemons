@@ -1,62 +1,61 @@
 @use "src/styles/variables.scss" as var;
 @use "src/styles/mixins.scss" as mixins;
 
-.bg-wrapper {
+.level-wrapper {
   @include mixins.wrapperStyles;
-  .level-wrapper {
-    @include mixins.gradientBg;
-    width: 90%;
-    height: 70%;
+  @include mixins.gradientBg;
+
+  .toggle {
+    @include mixins.toggleBtn;
+    font-size: 0.8em;
+    .icon {
+      font-size: 1em;
+    }
+  }
+  .setcalculation-wrapper {
+    height: 25%;
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    @include mixins.tablet {
-      width: 60%;
-    }
-    .toggle {
-      @include mixins.toggleBtn;
-      .icon {
-        font-size: 0.7em;
+  }
+  .setlevel-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 35%;
+    .toggle-long {
+      color: black;
+      font-family: "Play", sans-serif;
+      width: 200px;
+      height: 30px;
+      margin: 2px;
+      border-radius: 15px;
+      border: none;
+      background-color: white;
+      box-shadow: 5px 5px 10px 0px var.$shadow-color;
+      font-size: 0.5em;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: 3px solid #0f0f0f;
       }
     }
-    .select-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      justify-content: space-evenly;
-      .toggle-long {
-        color: black;
-        font-family: "Play", sans-serif;
-        width: 200px;
-        height: 30px;
-        margin: 2px;
-        border-radius: 15px;
-        border: none;
-        background-color: white;
-        box-shadow: 5px 5px 10px 0px var.$shadow-color;
-        font-size: 0.5em;
-        &:hover {
-          cursor: pointer;
-        }
-        &:focus {
-          outline: 3px solid #0f0f0f;
-        }
+    .btn-start {
+      @include mixins.playBtnStyles;
+      &:disabled {
+        opacity: 0.5;
+      }
+      &:focus {
+        outline: 3px solid #0f0f0f;
       }
     }
-    .active {
-      background-color: var.$secondarycolor !important;
-      color: white !important;
-    }
   }
-}
-.btn-start {
-  @include mixins.playBtnStyles;
-  &:disabled {
-    opacity: 0.5;
-  }
-  &:focus {
-    outline: 3px solid #0f0f0f;
+  .active {
+    background-color: var.$secondarycolor !important;
+    color: white !important;
   }
 }
