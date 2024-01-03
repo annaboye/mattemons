@@ -23,10 +23,6 @@
         width: 100px;
       }
     }
-    width: 100%;
-    @include mixins.tablet {
-      width: 50%;
-    }
   }
   .toggle {
     @include mixins.toggleBtn;

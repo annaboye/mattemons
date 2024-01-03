@@ -7,7 +7,7 @@
 }
 
 @mixin desktop {
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1000px) {
     @content;
   }
 }
@@ -20,6 +20,9 @@
   font-size: 2em;
   height: 70vh;
   width: 100%;
+  @include desktop {
+    width: 70%;
+  }
 }
 
 @mixin backgroundStyles($image-url) {
