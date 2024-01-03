@@ -8,6 +8,7 @@ React
 TypeScript
 Vite
 Pokémon data sourced from PokeAPI
+Jest
 
 ## Installation
 
@@ -24,6 +25,9 @@ git clone https://github.com/annaboye/mattemons.git
 3. Start the game:
    npm run dev
 
+4. Run tests:
+  npx jest
+  
 ## The game
 
 1. Choose your name in the list or enter your name if it is the first time playing.
