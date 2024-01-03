@@ -35,15 +35,6 @@
         }
         img {
           width: 100%;
-          &:hover {
-            cursor: url(src/assets/pokeballpointer.png), auto;
-            transform: scale(1.3);
-            transition: transform 0.3s ease;
-          }
-          &:active {
-            transform: scale(1.2);
-            transition: transform 0.3s ease;
-          }
         }
       }
       span {
