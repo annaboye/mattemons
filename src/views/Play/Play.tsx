@@ -61,7 +61,6 @@ export const Play = () =>{
           } while (option === correctAnswer || incorrectOptions.includes(option) || option < 0);
           incorrectOptions.push(option);
         }
-         
         const options = [
           { value: correctAnswer, isCorrect: true },
           { value: incorrectOptions[0], isCorrect: false },
@@ -69,7 +68,6 @@ export const Play = () =>{
         ];
         // shuffle the list:
         options.sort(() => Math.random() - 0.5);
-
         return {
           question: `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`,
           options,
@@ -82,7 +80,6 @@ export const Play = () =>{
         if (selectedOption.isCorrect) {
           setScore(score + 1);
         }
-    
         if (currentQuestion < 9) {
           setCurrentQuestion(currentQuestion + 1);
           setCurrentQuestionData(generateQuestion());
@@ -98,7 +95,6 @@ export const Play = () =>{
             else{
                 setShowTryAgain(true)
             }
-          
         }
       };
 
