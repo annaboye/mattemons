@@ -34,6 +34,6 @@ git clone https://github.com/annaboye/mattemons.git
 
 ## Screenshots
 
-![screenshots](/screenshot1.png);
+![screenshots](/public/screenshot1.png);
 
-![screenshots](/screenshot2.png);
+![screenshots](/public/screenshot2.png);
