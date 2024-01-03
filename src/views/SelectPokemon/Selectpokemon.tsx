@@ -18,6 +18,7 @@ export const SelectPokemon= () => {
     if (currentGame.player.playerName === '') {
       navigate('/');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentGame.player]);
 
   const selectPokemon = (pokemon: IPokemon)=> {
@@ -45,7 +46,7 @@ export const SelectPokemon= () => {
     <>
     <div className="select-wrapper">
       <div className="player">Hej {currentGame.player.playerName}! <p> Fånga din pokemon som ska utvecklas till nästa nivå: </p></div> 
-      <div className="poki-wrapper">{pokemons.map((pokemon)=>( <div key={pokemon.id} className="img-container"><img onClick={() => selectPokemon(pokemon)} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.evolves_from_species_id}.png`}
+      <div className="poki-wrapper">{pokemons.map((pokemon)=>( <div aria-label="välj pokemon" role="button"key={pokemon.id} className="img-container" tabIndex={0} onClick={() => selectPokemon(pokemon)}><img  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.evolves_from_species_id}.png`}
       alt="pokemon"  />
       </div>
       ))}

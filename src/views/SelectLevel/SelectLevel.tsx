@@ -36,11 +36,11 @@ export const SelectLevel= () => {
     <div className="img-container"><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
       <div>Välj räknesätt:</div>
         <div className="setcalculation-wrapper">
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "+"? "active" : ""}`} onClick={() => setCalculationMethod("+")}><FaPlus className="icon" ></FaPlus>
+        <button aria-label="select plus" tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "+"? "active" : ""}`} onClick={() => setCalculationMethod("+")}><FaPlus aria-label="plus" className="icon" ></FaPlus>
         </button>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "-"? "active" : ""}`} onClick={() => setCalculationMethod("-")}><FaMinus className="icon"></FaMinus></button>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "*"? "active" : ""}`} onClick={() => setCalculationMethod("*")}><ImCross className="icon"></ImCross></button>
-        <button tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "/"? "active" : ""}`} onClick={() => setCalculationMethod("/")}><FaDivide className="icon"></FaDivide></button>
+        <button aria-label="select minus" tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "-"? "active" : ""}`} onClick={() => setCalculationMethod("-")}><FaMinus aria-label="minus" className="icon"></FaMinus></button>
+        <button aria-label="select multiplication" tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "*"? "active" : ""}`} onClick={() => setCalculationMethod("*")}><ImCross aria-label="multiplication"className="icon"></ImCross></button>
+        <button aria-label="select divsion"tabIndex= {0} className={`toggle ${currentGame.level.calculationMethod=== "/"? "active" : ""}`} onClick={() => setCalculationMethod("/")}><FaDivide aria-label="divison" className="icon"></FaDivide></button>
       </div>
        
 

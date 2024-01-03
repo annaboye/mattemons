@@ -24,6 +24,7 @@ export const PokiEvolves = () => {
         alt="pokemon"
       />
     </div>
+    <p>Grattis din pokémon utvecklas!</p>
     <button className="play-btn" onClick={ ()=>{ navigate('/selectpokemon')} }>spela igen</button>
     <button className="collection-btn" onClick={()=>{ navigate('/collection')}}>Gå till min samling</button>
     <button className="cancel-btn" onClick={()=>{ navigate('/')}}>avsluta</button>
