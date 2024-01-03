@@ -18,6 +18,7 @@ export const SelectPokemon= () => {
     if (currentGame.player.playerName === '') {
       navigate('/');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentGame.player]);
 
   const selectPokemon = (pokemon: IPokemon)=> {
