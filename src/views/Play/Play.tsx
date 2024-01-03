@@ -148,9 +148,9 @@ export const Play = () =>{
               </button>
             ))}
           </div>
-          <p>Score: {score}</p>
+          <p>Poäng: {score}</p>
         </div>}
-        {showTryAgain && <div> <button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
+        {showTryAgain && <div><p>{score}/10 poäng</p><p>Bra kämpat, försök igen!</p><button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
         {currentGame.finishLevel && <PokiEvolves></PokiEvolves>}
       </div>)
 }
