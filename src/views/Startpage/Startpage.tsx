@@ -3,6 +3,7 @@ import "./Startpage.scss"
 import { IPlayer } from "../../models/IPlayer";
 import { GameContext, GameDispatchContext } from "../../contexts/CurrentGameContext";
 import { useNavigate } from "react-router-dom";
+import { FaRegPlayCircle } from "react-icons/fa";
 
 const defaultPlayerInput ={
   player: "",
@@ -70,14 +71,14 @@ export const Startpage= () => {
         
         ))}
         </ul>
-        <button tabIndex={0} className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>PLAY</button>
+        <button tabIndex={0} className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>SPELA<FaRegPlayCircle /></button>
         <p>ny spelare? <button  tabIndex={0}className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
         </div>}
         {!showPlayerList && <div className="form-wrapper">
           <p>Välkommen vad heter du?</p>
           <form onSubmit={submitPlayerForm} action="">
             <input type="text" placeholder="skriv ditt namn här..."value={userInput.player} onChange={handleChange} name="player" required />
-            <button tabIndex={0} className="play-btn"type="submit">PLAY</button>
+            <button tabIndex={0} className="play-btn"type="submit">SPELA <FaRegPlayCircle /></button>
           </form> 
           </div>}
           <div className="img-wrapper">
