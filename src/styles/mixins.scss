@@ -63,6 +63,9 @@
 }
 
 @mixin baseBtnStyles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 130px;
   height: 40px;
   border-radius: 40px;
