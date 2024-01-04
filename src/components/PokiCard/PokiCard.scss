@@ -1,0 +1,42 @@
+@use "src/styles/variables.scss" as var;
+@use "src/styles/mixins.scss" as mixins;
+
+.pokemoncard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 120px;
+  height: 150px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  margin: 5px;
+  border-radius: 10px;
+  outline: 2px solid rgb(32, 113, 218);
+  @include mixins.desktop {
+    width: 160px;
+    height: 210px;
+  }
+  .img-container {
+    border: 2px solid goldenrod;
+    background: rgb(1, 44, 100);
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    @include mixins.desktop {
+      width: 120px;
+      height: 100px;
+    }
+    img {
+      height: 100%;
+    }
+  }
+  span {
+    font-size: 0.5em;
+  }
+}
