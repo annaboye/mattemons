@@ -17,7 +17,14 @@ export const PokiCard = ({pokemon}:IPokiCardProps) => {
           alt="pokemon"
         />
       </div>
-      <span>{pokemon.name}</span>
+      <span>{pokemon.name.toLocaleUpperCase()}</span>
+      <span className="smallfont">Utvecklas från:</span>
+      <div className="smallimg-container">
+      <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.evolves_from_species_id}.png`}
+          alt="pokemon"
+        />
+        </div>
       </div>
     );
   };
