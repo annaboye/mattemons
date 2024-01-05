@@ -15,32 +15,6 @@
     @include mixins.desktop {
       width: 80%;
     }
-    .pokemon {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 150px;
-      height: 150px;
-      @include mixins.desktop {
-        width: 170px;
-        height: 170px;
-      }
-      .img-container {
-        width: 120px;
-        height: 120px;
-        @include mixins.desktop {
-          width: 150px;
-          height: 150px;
-        }
-        img {
-          width: 100%;
-        }
-      }
-      span {
-        font-size: 0.5em;
-      }
-    }
   }
   .play-btn {
     @include mixins.playBtnStyles;
