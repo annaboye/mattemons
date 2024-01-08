@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import "./Play.scss";
 import { GameContext, GameDispatchContext} from "../../contexts/CurrentGameContext";
-import { calculateAnswer, generateRandomNumber, generateRandomNumberInRange } from "../../functions/mathFunctions";
+import { generateQuestion} from "../../functions/gameFunctions";
 import { useNavigate } from "react-router-dom";
 import { IPlayer } from "../../models/IPlayer";
 import { PokiEvolves } from "../../components/PokiEvolves/PokiEvolves";
+import { IQuestiondata } from "../../models/IQuestionData";
 
-interface IQuestiondata {
-  question: string,
-  options: {value: number, isCorrect: boolean}[],
-}
+
 
 export const Play = () =>{
     const currentGame= useContext(GameContext);
@@ -25,7 +23,7 @@ export const Play = () =>{
         navigate('/');
       }
       else{
-        const questionData = generateQuestion();
+        const questionData = generateQuestion(currentGame, currentQuestionData);
         setCurrentQuestionData(questionData)
       }
       if (currentGame.finishLevel) {
@@ -34,45 +32,6 @@ export const Play = () =>{
           // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentGame.finishLevel]);
 
-    const generateQuestion = () => {
-        let num1 = generateRandomNumber(currentGame.level.numberMax);
-        let num2 = generateRandomNumber(num1);
-        const question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`
-     // check so next question will be different from current:
-        if( question === currentQuestionData?.question){
-          if(num1 === currentGame.level.numberMax && num2 !== 0){
-            num1 --;
-            num2 --;}
-            if(num1 === currentGame.level.numberMax && num2 === 0){
-              num1 --;
-            }
-            else{
-              num1 ++;
-            }
-        }
-        const correctAnswer = calculateAnswer(num1,num2, currentGame.level.calculationMethod)
-        // generate incorrectoptions and check that they differ from each other and from the correct answer:
-        const range = currentGame.level.numberMax; 
-        const incorrectOptions: number[] = [];
-        for (let i = 0; i < 2; i++) {
-          let option;
-          do {
-            option = generateRandomNumberInRange(correctAnswer - range, correctAnswer + range);
-          } while (option === correctAnswer || incorrectOptions.includes(option) || option < 0);
-          incorrectOptions.push(option);
-        }
-        const options = [
-          { value: correctAnswer, isCorrect: true },
-          { value: incorrectOptions[0], isCorrect: false },
-          { value: incorrectOptions[1], isCorrect: false },
-        ];
-        // shuffle the list:
-        options.sort(() => Math.random() - 0.5);
-        return {
-          question: `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`,
-          options,
-        };
-      };
 
       const handleAnswerClick = (selectedOption: { value: number; isCorrect: boolean }, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const clickedBtn = e.target as HTMLButtonElement;
@@ -82,7 +41,7 @@ export const Play = () =>{
         }
         if (currentQuestion < 9) {
           setCurrentQuestion(currentQuestion + 1);
-          setCurrentQuestionData(generateQuestion());
+          setCurrentQuestionData(generateQuestion(currentGame, currentQuestionData));
         } else {
             if (score===9 && selectedOption.isCorrect ){
               currentGame.finishLevel= true;
