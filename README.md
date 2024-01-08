@@ -26,8 +26,8 @@ git clone https://github.com/annaboye/mattemons.git
    npm run dev
 
 4. Run tests:
-  npx jest
-  
+   npx jest
+
 ## The game
 
 1. Choose your name in the list or enter your name if it is the first time playing.
@@ -38,6 +38,10 @@ git clone https://github.com/annaboye/mattemons.git
 
 ## Screenshots
 
-![screenshots](/public/screenshot1.png);
+![screenshots](/public/screenshot1.png)
 
-![screenshots](/public/screenshot2.png);
+![screenshots](/public/screenshot2.png)
+
+## Live Site
+
+The game is live! You can play it [here](https://gleaming-caramel-51b001.netlify.app/). The project is hosted on Netlify.
