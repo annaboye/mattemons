@@ -2,8 +2,12 @@ import {
   calculateAnswer,
   generateRandomNumber,
   generateRandomNumberInRange,
-} from "../functions/mathFunctions";
+  generateQuestion,
+} from "../functions/gameFunctions";
 import { describe, test, expect } from "@jest/globals";
+import { mockCurrentGame, mockCurrentQuestionData } from "./gameMockData";
+import { ICurrentGame } from "../models/ICurrentGame";
+import { IQuestiondata } from "../models/IQuestionData";
 
 describe("calculateAnswer", () => {
   test("adds two numbers correctly", () => {
@@ -66,5 +70,37 @@ describe("generateRandomNumberInRange", () => {
 
     expect(result).toBeGreaterThanOrEqual(min);
     expect(result).toBeLessThanOrEqual(max);
+  });
+});
+
+describe("generateQuestion", () => {
+  test("should generate a question and options", () => {
+    const currentGame: ICurrentGame = mockCurrentGame;
+    const currentQuestionData: IQuestiondata | undefined =
+      mockCurrentQuestionData;
+    const question = generateQuestion(currentGame, currentQuestionData);
+
+    expect(question).toHaveProperty("question");
+    expect(question).toHaveProperty("options");
+  });
+  test("should generate three options", () => {
+    const currentGame: ICurrentGame = mockCurrentGame;
+    const currentQuestionData: IQuestiondata | undefined =
+      mockCurrentQuestionData;
+    const question = generateQuestion(currentGame, currentQuestionData);
+
+    expect(question.options).toHaveLength(3);
+  });
+
+  test("should generate three unique options", () => {
+    const currentGame: ICurrentGame = mockCurrentGame;
+    const currentQuestionData: IQuestiondata | undefined =
+      mockCurrentQuestionData;
+    const question = generateQuestion(currentGame, currentQuestionData);
+
+    expect(question.options).toHaveLength(3);
+    expect(new Set(question.options.map((option) => option.value)).size).toBe(
+      3
+    );
   });
 });
