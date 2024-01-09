@@ -4,11 +4,11 @@ Mattemons is an interactive math game where you can evolve and collect Pokémons
 
 ## Technologies
 
-React
-TypeScript
-Vite
-Pokémon data sourced from PokeAPI
-Jest
+- React
+- TypeScript
+- Vite
+- Pokémon data sourced from PokeAPI
+- Jest
 
 ## Installation
 
@@ -26,16 +26,19 @@ y on your machine, follow these steps:
 ```bash
    npm install
 ```
+
 3. Start the game:
 
 ```bash
    npm run dev
 ```
+
 4. Run tests:
 
 ```bash
    npx jest
 ```
+
 ## The game
 
 1. Choose your name in the list or enter your name if it is the first time playing.
