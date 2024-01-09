@@ -17,17 +17,25 @@ y on your machine, follow these steps:
 
 1. Clone this project to your local machine:
 
+```bash
 git clone https://github.com/annaboye/mattemons.git
+```
 
 2. Install dependencies:
+
+```bash
    npm install
-
+```
 3. Start the game:
+
+```bash
    npm run dev
-
+```
 4. Run tests:
-   npx jest
 
+```bash
+   npx jest
+```
 ## The game
 
 1. Choose your name in the list or enter your name if it is the first time playing.
