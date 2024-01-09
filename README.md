@@ -18,7 +18,7 @@ y on your machine, follow these steps:
 1. Clone this project to your local machine:
 
 ```bash
-git clone https://github.com/annaboye/mattemons.git
+   git clone https://github.com/annaboye/mattemons.git
 ```
 
 2. Install dependencies:
