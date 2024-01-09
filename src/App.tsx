@@ -1,12 +1,12 @@
 import { GameContext, GameDispatchContext } from "../src/contexts/CurrentGameContext";
-import { gameReducer, initialState } from "../src/reducers/CurrentGameReducer";
+import { currentGameReducer, initialState } from "../src/reducers/CurrentGameReducer";
 import { useReducer } from "react";
 import { RouterProvider } from 'react-router-dom'
 import './App.scss'
 import { router } from './Router'
 
 function App() {
-  const [currentGame, dispatch] = useReducer(gameReducer, initialState);
+  const [currentGame, dispatch] = useReducer(currentGameReducer, initialState);
   
 
   return (

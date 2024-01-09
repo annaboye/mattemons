@@ -16,7 +16,7 @@ export const initialState: ICurrentGame = {
   finishLevel: false,
 };
 
-export const gameReducer = (
+export const currentGameReducer = (
   state: ICurrentGame = initialState,
   action: GameAction
 ): ICurrentGame => {
