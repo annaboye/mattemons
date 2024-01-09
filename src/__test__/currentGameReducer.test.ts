@@ -7,7 +7,7 @@ import {
   initialState,
 } from "../reducers/CurrentGameReducer";
 
-describe("gameReducer", () => {
+describe("currentGameReducer", () => {
   let initialStateCopy: ICurrentGame;
 
   beforeEach(() => {
