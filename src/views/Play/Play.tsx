@@ -92,7 +92,7 @@ export const Play = () =>{
     
     <div className="play-wrapper" >
         
-        {!showTryAgain && !currentGame.finishLevel && <div className="gameon-wrapper">
+        {!showTryAgain && !currentGame.finishLevel && <div className="game-wrapper">
          <div className="img-container"><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentGame.selectedPokemon.evolves_from_species_id}.png`} alt="pokemon" /></div>
           <p>Fråga {currentQuestion + 1}:</p>
           <p>{currentQuestionData?.question}</p>
@@ -105,7 +105,7 @@ export const Play = () =>{
           </div>
           <p>Poäng: {score}</p>
         </div>}
-        {showTryAgain && <div><p>{score}/10 poäng</p><p>Bra kämpat, försök igen!</p><button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
+        {showTryAgain && <div  className="game-wrapper"><p>{score}/10 poäng</p><p>Bra kämpat, försök igen!</p><button className="play-btn" onClick={wantToTryAgain}>Spela igen</button><button className="cancel-btn" onClick={cancel}>Avsluta</button></div>}
         {currentGame.finishLevel && <PokiEvolves></PokiEvolves>}
       </div>)
 }

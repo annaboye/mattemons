@@ -8,7 +8,7 @@
   color: var.$primarycolor;
   @include mixins.gradientBg;
   @include mixins.wrapperStyles;
-  .gameon-wrapper {
+  .game-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
