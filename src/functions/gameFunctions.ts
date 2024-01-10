@@ -34,7 +34,7 @@ export const generateQuestion = (
 ) => {
   let num1 = generateRandomNumber(currentGame.level.numberMax);
   let num2 = generateRandomNumber(num1);
-  const question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`;
+  let question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`;
   // check so next question will be different from current:
   if (question === currentQuestionData?.question) {
     if (num1 === currentGame.level.numberMax && num2 !== 0) {
@@ -47,11 +47,27 @@ export const generateQuestion = (
       num1++;
     }
   }
-  const correctAnswer = calculateAnswer(
+  let correctAnswer = calculateAnswer(
     num1,
     num2,
     currentGame.level.calculationMethod
   );
+  // Ensure that the correct answer is not a decimal number
+  while (correctAnswer % 1 !== 0) {
+    num1 = generateRandomNumber(currentGame.level.numberMax);
+    num2 = generateRandomNumber(num1);
+
+    if (num2 === 0) {
+      num2++;
+    }
+
+    question = `${num1} ${currentGame.level.calculationMethod} ${num2} = ?`;
+    correctAnswer = calculateAnswer(
+      num1,
+      num2,
+      currentGame.level.calculationMethod
+    );
+  }
   // generate incorrectoptions and check that they differ from each other and from the correct answer:
   const range = currentGame.level.numberMax;
   const incorrectOptions: number[] = [];
