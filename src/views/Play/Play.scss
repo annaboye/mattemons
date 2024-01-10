@@ -30,6 +30,10 @@
     @include mixins.toggleBtn;
     font-size: 1.5em;
   }
+  .smallfont {
+    @include mixins.toggleBtn;
+    font-size: 1em;
+  }
 
   .play-btn {
     @include mixins.playBtnStyles;

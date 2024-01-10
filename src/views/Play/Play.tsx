@@ -98,7 +98,7 @@ export const Play = () =>{
           <p>{currentQuestionData?.question}</p>
           <div>
             {currentQuestionData?.options.map((option, index) => (
-              <button className="toggle" key={index} onClick={(e) => handleAnswerClick(option, e)}>
+              <button className={`toggle ${option.value.toString().length === 3 ? "smallfont" : ""}`} key={index} onClick={(e) => handleAnswerClick(option, e)}>
                 {option.value}
               </button>
             ))}
