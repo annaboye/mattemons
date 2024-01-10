@@ -5,7 +5,12 @@ import {
   generateQuestion,
 } from "../functions/gameFunctions";
 import { describe, test, expect } from "@jest/globals";
-import { mockCurrentGame, mockCurrentQuestionData } from "./gameMockData";
+import {
+  mockCurrentGame,
+  mockCurrentGameDivide,
+  mockCurrentQuestionData,
+  mockCurrentQuestionDataDivide,
+} from "./gameMockData";
 import { ICurrentGame } from "../models/ICurrentGame";
 import { IQuestiondata } from "../models/IQuestionData";
 
@@ -102,5 +107,17 @@ describe("generateQuestion", () => {
     expect(new Set(question.options.map((option) => option.value)).size).toBe(
       3
     );
+  });
+  test("should generate a correctanswer that is not a decimal number", () => {
+    const currentGame: ICurrentGame = mockCurrentGameDivide;
+    const currentQuestionData: IQuestiondata | undefined =
+      mockCurrentQuestionDataDivide;
+    const question = generateQuestion(currentGame, currentQuestionData);
+
+    const correctAnswer = question.options.find(
+      (option) => option.isCorrect
+    )?.value;
+    expect(correctAnswer).toBeDefined();
+    expect(correctAnswer! % 1).toBe(0);
   });
 });
