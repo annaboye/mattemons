@@ -7,7 +7,7 @@
   }
   color: var.$primarycolor;
   @include mixins.wrapperStyles;
-  @include mixins.gradientBg;
+
   .img-wrapper {
     width: 200px;
     img {
@@ -41,9 +41,11 @@
     font-size: 0.8em;
 
     .playerslist {
+      border-radius: 10px;
       font-size: 0.5em;
       list-style: none;
-      margin: 0;
+      color: black;
+      margin: 2px;
       padding: 0;
       background-color: white;
       max-height: 150px;
@@ -84,7 +86,7 @@
   }
 
   .selected {
-    background-color: rgb(215, 186, 255);
+    background-color: rgb(139, 204, 152);
   }
 
   .play-btn {
@@ -98,11 +100,12 @@
   }
 
   .newplayerbtn {
-    background-color: white;
-
+    @include mixins.playBtnStyles;
+    background-color: #0f0f0f;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
-    &:hover {
+    shadow &:hover {
       cursor: pointer;
     }
   }

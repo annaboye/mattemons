@@ -26,7 +26,11 @@
 }
 
 @mixin backgroundStyles($image-url) {
-  background-image: url("/#{$image-url}");
+  background-image: linear-gradient(
+      rgba(20, 20, 20, 0.55),
+      rgba(20, 20, 20, 0.55)
+    ),
+    url("/#{$image-url}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,11 +38,7 @@
 }
 
 @mixin gradientBg {
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 10%,
-    transparent 55%
-  );
+  background-color: rgba(20, 20, 20, 0.55);
 }
 
 @mixin toggleBtn {

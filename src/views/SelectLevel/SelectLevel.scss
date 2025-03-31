@@ -3,7 +3,7 @@
 
 .level-wrapper {
   @include mixins.wrapperStyles;
-  @include mixins.gradientBg;
+  color: var.$primarycolor;
   .img-container {
     width: 150px;
     @include mixins.desktop {

@@ -56,7 +56,7 @@ export const Startpage= () => {
      <>
       <div className="start-wrapper">
         <h1>MATTEMONS</h1>
-        {showPlayerList && <div className="players-wrapper">välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(
+        {showPlayerList && <div className="players-wrapper">Välj ditt namn i listan:<ul className="playerslist">{playerlist.map((player, index)=>(
           <li key={index} onClick={() => selectPlayer(player)}className={player.playerName === currentGame.player.playerName ? "selected" : ""}>
             <label>
             <input tabIndex={0}
@@ -72,7 +72,7 @@ export const Startpage= () => {
         ))}
         </ul>
         <button tabIndex={0} className="play-btn"type="submit" onClick={goToPlay} disabled={currentGame.player.playerName === ""}>SPELA<FaRegPlayCircle /></button>
-        <p>ny spelare? <button  tabIndex={0}className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}> lägg till här...</button></p>
+        <p>Ny spelare? <button  tabIndex={0}className="newplayerbtn" onClick={()=>{setShowPlayerList(false)}}>Lägg till</button></p>
         </div>}
         {!showPlayerList && <div className="form-wrapper">
           <p>Välkommen vad heter du?</p>

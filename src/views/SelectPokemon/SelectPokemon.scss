@@ -4,14 +4,8 @@
 .select-wrapper {
   @include mixins.wrapperStyles;
   font-size: 0.8em;
-
+  color: var.$primarycolor;
   .player {
-    background: linear-gradient(
-      transparent 0%,
-      rgba(238, 174, 202, 1) 20%,
-      rgba(238, 174, 202, 1) 60%,
-      transparent 100%
-    );
     font-size: 1.5em;
   }
   .pokemon-ball {
